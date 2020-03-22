@@ -1,16 +1,15 @@
-var path = require("path");
+const path = require("path");
 
-module.exports = function (app) {
-    app.get("/exercise", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/exercise.html"));
-    });
+module.exports = app => {
 
-    app.get("/", function (req, res) {
-        res.sendFile(path.join(__dirname, "../public/index.html"));
-    });
-
-    app.get("/stats", function (req, res) {
+    app.get("/stats", (req, res) => {
+        console.log("in the stats html route");
         res.sendFile(path.join(__dirname, "../public/stats.html"));
     });
 
-}
+    app.get("/exercise", (req, res) => {
+        console.log("in the exercise html route");
+        res.sendFile(path.join(__dirname, "../public/exercise.html"));
+    });
+
+};
