@@ -11,8 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://<mnle>:<Bootcamp1234>@ds011331.mlab.com:11331/heroku_nqcvg87n";
-mongoose.connect(MONGODB_URI);
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/workout";
+mongoose.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useFindAndModify: false
+})
 
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
